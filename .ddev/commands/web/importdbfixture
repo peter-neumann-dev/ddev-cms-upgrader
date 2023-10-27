@@ -1,0 +1,27 @@
+#!/bin/bash
+
+## Description: Import database fixtures from .ddev/fixtures/database
+## Assuming you are using default database of ddev
+## If you configured other database names you must change the ddev mysql commands
+## Usage: importdbfixtures
+
+# Specify the path to the DDEV database container.
+DB_CONTAINER_NAME="db"
+
+# Specify the path to the fixtures folder.
+FIXTURES_DIR="../fixtures/database/"
+
+# Loop through all SQL and SQL.gz files in the fixtures folder.
+for file in "$FIXTURES_DIR"*.sql*; do
+  if [ -f "$file" ]; then
+    # Import the plain SQL file using MySQL in the DDEV container.
+    echo "Importing $file into database $DB_CONTAINER_NAME"
+    if [[ "$file" == *.gz ]]; then
+      echo "Import the compressed SQL file in the DDEV container."
+      gzip -dc "$file" | mysql "$DB_CONTAINER_NAME"
+    else
+      echo "Import the plain SQL file using MySQL in the DDEV container."
+      mysql $DB_CONTAINER_NAME < $file
+    fi
+  fi
+done

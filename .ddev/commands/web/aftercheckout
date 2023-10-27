@@ -1,0 +1,8 @@
+#!/bin/bash
+
+## Description: Cleanup after checkout
+## Usage: aftercheckout
+set -e
+
+echo "Remove TYPO3 related files after checkout if needed"
+rm -rf ./vendor && rm -rf ./var && rm -rf ./web/

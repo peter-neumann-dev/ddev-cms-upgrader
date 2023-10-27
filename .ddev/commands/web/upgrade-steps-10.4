@@ -1,0 +1,13 @@
+#!/bin/bash
+
+## Description: Start steps for typo3 v10 upgrade
+## Usage: upgrade-steps-10.4
+
+
+echo "--- Steps in TYPO3 10.4! ---"
+
+echo "* Prepare all uprade wizards of TYPO3."
+vendor/bin/typo3cms upgrade:prepare
+
+echo "* Execute all uprade wizards of TYPO3."
+vendor/bin/typo3cms upgrade:run all --deny all
