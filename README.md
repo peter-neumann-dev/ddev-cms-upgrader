@@ -87,8 +87,8 @@ for doing stuff locally after checkout the branch.
 
 ---
 > We recommend that you perform as many database actions as possible in the upgrade steps.
-> Sometimes it's easy to save the data in the backend after changes and use a simple export for
-> generating the update query. Then use this in individually sql files.
+> Sometimes it's easy to save the data in the backend after doing changes and make a simple sql
+> export for generating the update query. Then use this in individually sql files.
 ---
 
 There is an example to execute your own sql on upgrade step in the file
