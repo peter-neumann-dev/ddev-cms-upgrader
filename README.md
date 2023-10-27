@@ -85,6 +85,15 @@ You can add more files and hooks if you need some. Maybe there are some steps ne
 folders and files in your installation. There is a sample file  [`aftercheckout`](.ddev/commands/web/aftercheckout)
 for doing stuff locally after checkout the branch.
 
+---
+> We recommend that you perform as many database actions as possible in the upgrade steps.
+> Sometimes it's easy to save the data in the backend after changes and use a simple export for
+> generating the update query. Then use this in individually sql files.
+---
+
+There is an example to execute your own sql on upgrade step in the file
+[`UpdateQueryForMe.sql`](.ddev/commands/web/aftercheckout).
+
 #### Import database on the first branch
 
 There is a special feature in the first branch. You have to import the database. For those step
