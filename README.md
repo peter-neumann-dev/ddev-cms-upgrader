@@ -92,7 +92,7 @@ for doing stuff locally after checkout the branch.
 ---
 
 There is an example to execute your own sql on upgrade step in the file
-[`UpdateQueryForMe.sql`](.ddev/commands/web/aftercheckout).
+[`UpdateQueryForMe.sql`](.ddev/commands/web/UpdateQueryForMe.sql).
 
 #### Import database on the first branch
 
