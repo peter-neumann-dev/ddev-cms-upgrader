@@ -1,0 +1,61 @@
+Überschrift:
+
+Automatisches TYPO3 Update über mehrere Major Versionen mit DDEV
+
+Teaser:
+
+Mit diesem kleinen Tool sind automatisierte TYPO3 Updates über mehrere Version kein Problem.
+Entwickler meistern mit diesem Tool auch komplexe TYPO3 Updates ohne einen wochenlangen Freeze für den Kunden.
+Einzige Voraussetzung: eine lokale DDEV Installation und Git.
+
+Text:
+
+Aber von vorn. TYPO3 Updates über mehrere Versionen erfordern einfach viele Zwischenschritte in den einzelnen Versionen.
+Da sind zum einen die Core Upgrade Wizards, Upgrade Wizards von Extensions und nicht zuletzt individuelle Anpassungen
+des einzelnen Projekts in Form von DB Änderungen.
+Diese hängen oft an einer bestimmten TYPO3 Version und erfordern daher, dass man bei einem Update von TYPO3 9.5 auf
+TYPO3 12 nicht einfach die Versionen 10 und 11 überspringen kann. Mann muss oft auch diese Versionen einmal
+aufsetzen und dort Aufgaben ausführen.
+Mit DDEV ist das aufsetzen dieser Installationen üblicherweise kein Problem. Da komplexe TYPO3 Webseiten aber oftmals
+viele solche Aufgaben erfordern, kann es mühselig werden wenn das Update länger dauert und man Schritte
+mit einem frischen DB Dump wiederholen muss.
+Mühselig in der Dokumentation der Schritte und unter Umständen auch mühselig in der Ausführung. Ganz zu schweigen von
+Sachen die untergehen und dann erst hinterher wieder auffallen wenn die Seite live gehen soll.
+
+Das muss doch besser gehn! Ja, geht es auch. Und TYPO3 bringt die Werkzeuge dafür sogar schon mit.
+
+Wir hatten bei uns in der Agentur (undkonsorten) schon länger ein Script mit dem wir solche Schritte automatisiert hatten.
+Das alles sehr speziell und individuell auf unsere Entwicklungsumgebungen angepasst.
+Damit die TYPO3 Community von solchen Lösungen profitieren kann, musste eine allgemeine Lösung her.
+
+Die haben wir jetzt. Wir, die TYPO3 User Group Magdeburg haben in einer Live Coding Session ein kleines Bash Script
+geschrieben, welches die Basis dafür stellt. Das Script ist auf Github veröffentlich und mit einer kleinen Doku
+versehen welches das Vorgehen für ein TYPO3 Update im Einzelnen beschreibt.
+
+Im Groben läuft das Ganze so ab. Über eine Angabe der benötigten TYPO3 Versionen, checkt das Script nacheinander
+entsprechend vorbereitete Branches aus. Fährt eine DDEV Umgebung hoch und führt Post-Start Hooks von DDEV aus.
+Die Post Start Hooks in DDEV erledigen dann den Rest. Dort werden Aufrufe für Upgrade Wizards oder auch der DB Import
+im ersten ausgecheckten Branch ausgeführt. Die TYPO3 CommandLine Tools bringen ja alles nötige dafür mit.
+Das Script kümmert sich dann um das Stoppen der DDEV Installation, checkt den nächsten Branch aus
+und fährt die DDEV Installtion wieder hoch. Und so weiter...
+
+Im Grunde ist das Script recht simpel. Die Komplexität kommt erst mit den
+Post-Start Hooks. Das hat einen großen Vorteil! Das Script ist so nicht auf TYPO3 beschränkt.
+Man könnte das Script so auch für jedes andere CMS, welches mit DDEV läuft, benutzen. Einfach Versionsnummer und
+Bezeichnung in der .env Datei angeben und los.
+
+Wir hoffen, das dieses Script auch anderen bei Ihren TYPO3 Updates hilft und freuen uns natürlich über Feedback dazu.
+Gern im Slack Channel #tugmd oder auch direkt im Github. Wer mag kann auch gerne mal bei uns vorbeischauen.
+Die TYPO3 Usergroup trifft sich alle 3 Monate in Magedburg abwechselnd bei veschriedenen Agenturen.
+Den nächsten Termin findet ihr auf unserer Meetup Seite oder erfragt ihn einfach im Slack.
+
+Links:
+
+Github: https://github.com/peter-neumann-dev/ddev-cms-upgrader
+Meetup: https://www.meetup.com/TYPO3-UserGroup-Magdeburg
+Undkonsorten: https://www.undkonsorten.com
+DDEV: https://ddev.com/
+DDEV TYPO3: https://ddev.readthedocs.io/en/stable/users/quickstart/#typo3
+
+
+
