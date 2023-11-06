@@ -6,7 +6,7 @@ Teaser:
 
 Mit diesem kleinen Tool sind automatisierte TYPO3-Updates über mehrere Versionen kein Problem.
 Entwickler meistern mit diesem Tool auch komplexe TYPO3-Updates ohne einen wochenlangen Freeze für den Kunden.
-Einzige Voraussetzung: eine lokale DDEV-Installation und Git.
+Einzige Voraussetzung: Eine lokale DDEV-Installation und Git.
 
 Text:
 
@@ -22,7 +22,7 @@ mit einem frischen DB-Dump wiederholen muss.
 Mühselig in der Dokumentation der Schritte und unter Umständen auch mühselig in der Ausführung dieser. Ganz zu schweigen von
 Sachen, die untergehen, vergessen werden und erst wieder auffallen, wenn die Seite live gehen soll.
 
-Das muss doch besser gehn! Ja, geht es auch. Und TYPO3 bringt die Werkzeuge dafür sogar schon mit.
+Das muss doch besser gehen! Ja, geht es auch. Und TYPO3 bringt die Werkzeuge dafür sogar schon mit.
 
 Wir hatten bei uns in der Agentur (undkonsorten) schon länger ein Script, mit dem wir solche Schritte automatisiert haben.
 Das war alles sehr speziell und individuell auf unsere Entwicklungsumgebung angepasst.
@@ -34,8 +34,8 @@ versehen, wie das Script ganz konkret für ein TYPO3 Update genutzt werden kann.
 
 Im Groben läuft das Ganze so ab. Über eine Angabe der benötigten TYPO3-Versionen (in einer .env Datei), checkt das Script nacheinander
 entsprechend vorbereitete Branches aus. Es fährt eine DDEV Umgebung hoch und führt Post-Start-Hooks von DDEV aus.
-Die Post-Start-Hooks in DDEV erledigen dann die eigentliche Arbeit. Dort werden Aufrufe für Upgrade Wizards oder auch der DB Import
-im ersten ausgecheckten Branch ausgeführt. Die TYPO3 CommandLine Tools bringen ja alles Nötige dafür mit.
+Die Post-Start-Hooks in DDEV erledigen dann die eigentliche Arbeit. Die TYPO3 CommandLine Tools bringen ja alles Nötige dafür mit.
+Damit werden Aufrufe für Upgrade Wizards oder auch der DB Import im ersten ausgecheckten Branch ausgeführt.
 Das Script kümmert sich dann um das Stoppen der DDEV Installation, checkt den nächsten Branch aus
 und fährt die DDEV Installation wieder hoch. Und so weiter …
 
@@ -45,9 +45,10 @@ Man könnte das Script so auch für jedes andere CMS, welches mit DDEV läuft, b
 Bezeichnung in der .env Datei angeben und los.
 
 Wir hoffen, dass dieses Script auch anderen bei Ihren TYPO3 Updates hilft und freuen uns natürlich über Feedback dazu.
-Gern im Slack Channel #tugmd oder auch direkt im Github. Wer mag, kann auch gern mal bei uns vorbeischauen.
+Gern im Slack Channel #tugmd oder Ergänzungen auch gleich als Pull Request im Github. Wer mag, kann auch gern mal bei uns vorbeischauen.
 Die TYPO3 Usergroup trifft sich alle 3 Monate in Magdeburg, abwechselnd bei verschiedenen Agenturen.
-Den nächsten Termin findet ihr auf unserer Meetup-Seite oder erfragt ihn einfach im Slack.
+Der nächste Termin ist der 22.11.23 um 18:30. Ansonsten könnt ihr Termine auch auf unserer Meetup-Seite nachschauen oder
+in unserem Slack Channel erfragen.
 
 Links:
 
