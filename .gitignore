@@ -24,4 +24,5 @@ nbproject
 *.log
 
 *.sql
+!/.ddev/commands/web/*.sql
 *.sql.gz

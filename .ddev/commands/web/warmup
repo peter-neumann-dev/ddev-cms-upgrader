@@ -1,0 +1,16 @@
+#!/bin/bash
+
+## Description: Warmup steps after starting the container
+## Usage: warmup
+
+# typo3-console commands, require installed package helhum/typo3-console
+vendor/bin/typo3cms install:fixfolderstructure
+echo ">> Updating DB schema"
+vendor/bin/typo3cms database:updateschema
+echo ">> Activating extensions"
+vendor/bin/typo3cms extension:setupactive
+echo ">> Fetch localizations"
+vendor/bin/typo3cms language:update
+echo
+echo ">> Flushing caches"
+vendor/bin/typo3cms cache:flush

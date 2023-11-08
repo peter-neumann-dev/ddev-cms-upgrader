@@ -1,0 +1,63 @@
+Überschrift:
+
+Automatisches TYPO3 Update über mehrere Major Versionen mit DDEV
+
+Teaser:
+
+Mit diesem kleinen Tool sind automatisierte TYPO3-Updates über mehrere Versionen kein Problem.
+Entwickler meistern mit diesem Tool auch komplexe TYPO3-Updates ohne einen wochenlangen Freeze für den Kunden.
+Einzige Voraussetzung: Eine lokale <DDEV-Installation [Link zu DDEV TYPO3]> und Git.
+
+Text:
+
+Aber von vorn. TYPO3-Updates über mehrere Versionen erfordern oft viele Zwischenschritte in den einzelnen Versionen.
+Da sind zum einen die Core Upgrade Wizards, Upgrade Wizards von Extensions und nicht zuletzt individuelle Anpassungen
+des einzelnen Projekts in Form von Datenbankänderungen.
+Diese hängen oft an einer bestimmten TYPO3-Version und erfordern daher, dass man beispielsweise bei einem Update von TYPO3 9.5 auf
+TYPO3 12 nicht einfach die Versionen 10 und 11 überspringen kann. Man muss oft auch diese Versionen einmal
+aufsetzen und dort bestimmte Aufgaben durchführen.
+Mit <DDEV [Link zu DDEV]> ist das Aufsetzen dieser Installationen üblicherweise kein Problem. Da komplexe TYPO3-Webseiten aber oftmals
+viele solche Aufgaben erfordern, kann es mühselig werden, wenn das Update länger dauert und man alle Schritte
+mit einem frischen DB-Dump wiederholen muss.
+Mühselig in der Dokumentation der Schritte und unter Umständen auch mühselig in der Ausführung dieser. Ganz zu schweigen von
+Sachen, die untergehen, vergessen werden und erst wieder auffallen, wenn die Seite live gehen soll.
+
+Das muss doch besser gehen! Ja, geht es auch. Und TYPO3 bringt die Werkzeuge dafür sogar schon mit.
+
+Wir hatten bei uns in der Agentur (<undkonsorten [Link zu undkonsorten]>) schon länger ein Script, mit dem wir solche Schritte automatisiert haben.
+Das war alles sehr speziell und individuell auf unsere Entwicklungsumgebung angepasst.
+Damit die TYPO3-Community von solchen Lösungen profitieren kann, musste eine bessere, unabhängigere Lösung her.
+
+Die haben wir jetzt. Wir, die <TYPO3 User Group Magdeburg [Link zu Meetup T3UG Magdeburg]>, haben in einer Live Coding Session ein kleines Bash Script
+geschrieben, welches die Basis dafür darstellt. Das Script ist auf Github veröffentlicht und mit einer kleinen Dokumentation
+versehen, wie das Script ganz konkret für ein TYPO3 Update genutzt werden kann.
+
+Im Groben läuft das Ganze so ab. Über eine Angabe der benötigten TYPO3-Versionen (in einer .env Datei), checkt das Script nacheinander
+entsprechend vorbereitete Branches aus. Es fährt eine DDEV Umgebung hoch und führt Post-Start-Hooks von DDEV aus.
+Die Post-Start-Hooks in DDEV erledigen dann die eigentliche Arbeit. Die TYPO3 CommandLine Tools bringen ja alles Nötige dafür mit.
+Damit werden Aufrufe für Upgrade Wizards oder auch der DB Import im ersten ausgecheckten Branch ausgeführt.
+Das Script kümmert sich dann um das Stoppen der DDEV Installation, checkt den nächsten Branch aus
+und fährt die DDEV Installation wieder hoch. Und so weiter …
+
+Im Grunde ist das Script recht simpel. Die Komplexität kommt erst mit den
+Post-Start-Hooks. Das hat einen großen Vorteil! Das Script ist so überhaupt nicht auf TYPO3 beschränkt.
+Man könnte das Script so auch für jedes andere CMS, welches mit DDEV läuft, benutzen. Einfach Versionsnummer und
+Bezeichnung in der .env Datei angeben und los.
+
+<Button mit Link zum DDEV CMS Upgrader auf Github>
+
+Wir hoffen, dass dieses Script auch anderen bei Ihren TYPO3 Updates hilft und freuen uns natürlich über Feedback dazu.
+Gern im Slack Channel <#tugmd [Link zu #tugmd]> oder Ergänzungen auch gleich als Pull Request im Github. Wer mag, kann auch gern mal bei uns vorbeischauen.
+Die TYPO3 Usergroup trifft sich alle 3 Monate in Magdeburg, abwechselnd bei verschiedenen Agenturen.
+Der nächste Termin ist der <22.11.23 um 18:30 bei der Münsmedia GmbH [Link zu Meetup Events]>. Ansonsten könnt ihr Termine auch auf unserer <Meetup-Seite [Link zu Meetup T3UG Magdeburg]> nachschauen oder
+in unserem <Slack Channel [Link zu #tugmd]> erfragen.
+
+Links:
+
+Github DDEV CMS Upgrader: https://github.com/peter-neumann-dev/ddev-cms-upgrader
+Meetup: https://www.meetup.com/TYPO3-UserGroup-Magdeburg
+Meetup Events: https://www.meetup.com/typo3-usergroup-magdeburg/events/296250744/
+Slack Channel TYPO3 Usergroup Magdeburg: #tugmd
+Undkonsorten: https://www.undkonsorten.com
+DDEV: https://ddev.com/
+DDEV TYPO3: https://ddev.readthedocs.io/en/stable/users/quickstart/#typo3

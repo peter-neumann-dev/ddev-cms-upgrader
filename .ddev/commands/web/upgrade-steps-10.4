@@ -1,0 +1,18 @@
+#!/bin/bash
+
+## Description: Start steps for typo3 v10 upgrade
+## Usage: upgrade-steps-10.4
+
+
+echo "--- Steps in TYPO3 10.4! ---"
+
+echo "* Prepare all uprade wizards of TYPO3."
+vendor/bin/typo3cms upgrade:prepare
+
+echo "* Execute all uprade wizards of TYPO3."
+vendor/bin/typo3cms upgrade:run all --deny all
+
+# SQL - Execute own sql queries, if needed for the update
+echo "* Execute my own query after update to TYPO3 10.4"
+# path for sql files is just an example
+vendor/bin/typo3cms database:import < ".ddev/commands/web/UpdateQueryForMe.sql"

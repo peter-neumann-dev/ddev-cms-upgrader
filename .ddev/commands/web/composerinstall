@@ -1,0 +1,19 @@
+#!/bin/bash
+
+## Description: Composer install depends on env BUILD_INCLUDING_DEV
+## Set env variable BUILD_INCLUDING_DEV in your ddev config.yaml or ddev config.local.yaml
+## Usage: composerinstall
+set -e
+
+if [[ $BUILD_INCLUDING_DEV -gt 0 ]]; then
+    composerOptions=
+    reportString="with dev packages"
+else
+    composerOptions=" --no-dev --optimize-autoloader"
+    reportString="without dev packages and with optimized autoloader"
+fi
+# Check wether composer.json file exists
+if [[ -f composer.json ]]; then
+  echo "Start composer install ${reportString}"
+  composer install${composerOptions}
+fi
