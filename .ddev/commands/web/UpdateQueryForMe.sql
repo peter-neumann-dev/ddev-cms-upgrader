@@ -1,1 +1,1 @@
-# Add your needed SQL Queries here!
+-- Add your needed SQL Queries here!
