@@ -9,7 +9,7 @@
 DB_CONTAINER_NAME="db"
 
 # Specify the path to the fixtures folder.
-FIXTURES_DIR="../fixtures/database/"
+FIXTURES_DIR="fixtures/database/"
 
 # Loop through all SQL and SQL.gz files in the fixtures folder.
 for file in "$FIXTURES_DIR"*.sql*; do
