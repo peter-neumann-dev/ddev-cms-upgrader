@@ -150,6 +150,26 @@ ddev delete -O
 
 I hope that works for you. And now … happy upgrading 😄
 
+## 🚀 Possible improvements
+
+This tool is just a first approach, an idea, a suggestion. It is certainly appropriate to
+improve it.
+
+### One possible variant with stop using DDEV's post-start hooks.
+
+A check for the first run was added in the `auto-upgrade.sh`. Now it's possible to do some special
+things on first run:
+
+* Use ddev providers to get a database dump from production and import them automatically
+  * Not implemented here. That depends on your production system. You have to do it by yourself.
+See DDEV Docs: https://ddev.readthedocs.io/en/stable/users/providers/
+* Do some preparation stuff (composer install, activate extensions, updateschema …)
+  * See example for `.ddev/commands/web/warmup`
+* Do upgrade steps with the command in DDEV's Web-Container (`.ddev/commands/web/upgrade`).
+  * File/DDEV-Command (`upgrade-steps-10.4` -> `upgrade`) renamed. It's enough to change code in the
+file for each branch. Filename is secondary.
+
+
 ## 💎 Credits
 
 This script was created within the [TYPO3 Usergroup Magdeburg](https://www.meetup.com/de-DE/typo3-usergroup-magdeburg/)
