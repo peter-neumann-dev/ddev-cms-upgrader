@@ -1,7 +1,7 @@
 #!/bin/bash
 
-## Description: Start steps for typo3 v10 upgrade
-## Usage: upgrade-steps-10.4
+## Description: Start steps for typo3 upgrade
+## Usage: upgrade
 
 
 echo "--- Steps in TYPO3 10.4! ---"
